@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Expense Chart">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox name="month" value={month} placeholder="Select month"
+                options={monthOptions} onchange={handleMonth} variant="label-hidden">
+            </lightning-combobox>
+        </div>
+        <template if:false={showContent}>
+            <span style="display: flex; justify-content: center; color:red;" class="slds-var-m-around_medium">
+                No results for the selected month
+            </span>
+        </template>
+        <div class="chart slds-var-m-around_medium" lwc:dom="manual"></div>
+    </lightning-card>
+</template>

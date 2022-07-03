@@ -1,3 +1,20 @@
 <template>
-    
+    <lightning-card title="Expenses" icon-name="custom:custom40">
+        <lightning-button style="display: flex; justify-content: right; margin-right: 0.75rem;" onclick={toggleModal} label="New expense"></lightning-button>
+        <template if:true={showPositionCreateModal}>
+            <c-expense-creator object-api-name="Expense__c"></c-expense-creator>
+        </template>
+        <div class="slds-var-p-around_small">
+            <div style="height: 500px; overflow: auto;" onitemregister={handleItemRegister}>
+                <c-custom-data-table class="slds-max-medium-table_stacked" onvaluechange={handleValueChange}
+                    oncellchange={handleCellChange} data={records} columns={columns} show-row-number-column="false"
+                    key-field="Id" draft-values={draftValues} onsave={handleSave} data-record="Id" onedit={handleEdit}
+                    hide-checkbox-column="true" oncancel={handleCancel}>
+                </c-custom-data-table>
+            </div>
+        </div>
+        <div class="showSpinner" if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+        </div>
+    </lightning-card>
 </template>

@@ -155,7 +155,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Expense</label>
     <nameField>
-        <label>Expense Name</label>
+        <label>Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Expenses</pluralLabel>

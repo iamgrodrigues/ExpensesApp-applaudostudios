@@ -7,6 +7,7 @@
     <columns>Expense_Date__c</columns>
     <columns>Is_Recurrent__c</columns>
     <columns>Recurrence_Periodicity__c</columns>
+    <columns>No_Recurrences__c</columns>
     <columns>CREATEDBY_USER</columns>
     <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>

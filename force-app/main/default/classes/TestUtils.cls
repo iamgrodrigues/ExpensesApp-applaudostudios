@@ -16,12 +16,6 @@ public class TestUtils {
         if (amount == null) {
             amount = 10.5;
         }
-        if (String.isBlank(rePeriodicity)) {
-            rePeriodicity = 'Monthly';
-        }
-        if (noRecurrence == null) {
-            noRecurrence = 12;
-        }
 
         Expense__c expense = new Expense__c(
             Name = name,

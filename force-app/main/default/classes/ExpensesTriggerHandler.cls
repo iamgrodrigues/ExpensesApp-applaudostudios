@@ -40,18 +40,20 @@ public class ExpensesTriggerHandler {
     private void cloneRecurrentExpenses(List<Expense__c> newExpenseList) {
 
         List<Expense__c> clonedExpenses = new List<Expense__c>();
+        Expense__c cloneExpense;
 
         for (Expense__c expense : newExpenseList) {
             if (!expense.isClone()) {
-                Expense__c cloneExpense = expense.clone(false, false, true, false);
-                for (Integer i = 0; i < expense.No_Recurrences__c; i++) {
+                for (Integer i = 1; i < expense.No_Recurrences__c; i++) {
                     if (Constants.EXPENSE_PERIODICITY_MONTHLY.equals(expense.Recurrence_Periodicity__c)) {
+                        cloneExpense = expense.clone(false, false, true, false);
                         cloneExpense.Expense_Date__c = expense.Expense_Date__c
                                                         .addMonths(i)
                                                         .toStartOfMonth()
                                                         .addDays(14);
                         clonedExpenses.add(cloneExpense);
                     } else if (Constants.EXPENSE_PERIODICITY_WEEKLY.equals(expense.Recurrence_Periodicity__c)) {
+                        cloneExpense = expense.clone(false, false, true, false);
                         cloneExpense.Expense_Date__c = getWeeklyExpenseDate(expense.Expense_Date__c, i);
                         clonedExpenses.add(cloneExpense);
                     }
